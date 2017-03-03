@@ -39,6 +39,11 @@ function initialize() {
 		}
 	}).val(unit_cost);
 
+	$("#unit-cost").focusout(function(e) {
+		updateCostPerUnit($(this).val());
+		$(this).blur();
+	});
+
 	createDropdown();
 	updateUnit("Hour");
 }
