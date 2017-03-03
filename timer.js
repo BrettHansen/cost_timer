@@ -38,7 +38,7 @@ function initialize() {
 	}).val(unit_cost);
 
 	$("#unit-cost").focusout(function(e) {
-		updateCostPerUnit($(this).val());
+		updateCostPerUnit($(this).val(), true);
 	});
 
 	$("#unit-cost").focus(function(e) {
@@ -62,12 +62,13 @@ function createDropdown() {
 	});
 }
 
-function updateCostPerUnit(new_cost) {
+function updateCostPerUnit(new_cost, do_not_blur) {
 	if(!isNaN(parseFloat(new_cost)) && isFinite(new_cost)) {
 		$("#unit-cost").removeClass("alert alert-warning");
 		unit_cost = parseFloat(new_cost);
 		cost_per_second = unit_cost / units[unit];
-		$("#unit-cost").blur();
+		if(!do_not_blur)
+			$("#unit-cost").blur();
 	}
 }
 
