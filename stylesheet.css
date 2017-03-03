@@ -1,0 +1,67 @@
+body {
+  padding-top: 5rem;
+}
+
+#timer-container, #cost-container {
+  text-align: center;
+}
+
+#equals {
+	margin: 0 50px;
+}
+
+#cost {
+}
+
+.positive-cost {
+	color: #13701c;
+}
+
+.negative-cost {
+	color: #cc2828;
+}
+
+h1 {
+	font-size: 60px;
+	font-weight: 100;
+}
+
+#timer-display {
+	padding: 0 20px 10px 20px;
+	border: 1px solid #555555;
+	border-radius: 10px;
+	margin: 20px;
+}
+
+#timer-controls > div > button {
+	width: 100px;
+}
+
+#cost-container {
+	margin: 50px 0;
+}
+
+#unit-cost {
+	width: 100px;
+}
+
+#unit-cost:focus {
+	font-style: italic;
+}
+
+#unit-per {
+	margin: 0 25px;
+}
+
+.caret {
+	margin-left: 10px !important;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.spacer {
+	margin-left: 10%;
+	margin-right: 10%;
+}
