@@ -58,8 +58,11 @@ function createDropdown() {
 
 function updateCostPerUnit(new_cost) {
 	if(!isNaN(parseFloat(new_cost)) && isFinite(new_cost)) {
+		$("#unit-cost").removeClass("alert alert-warning");
 		unit_cost = parseFloat(new_cost);
 		cost_per_second = unit_cost / units[unit];	
+	} else {
+		$("#unit-cost").addClass("alert alert-warning");
 	}
 }
 
