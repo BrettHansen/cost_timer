@@ -32,17 +32,22 @@ function initialize() {
 		}
 	});
 
-	$("#unit-cost").keydown(function(e) {
-		if(e.keyCode == 13)
-			updateCostPerUnit($(this).val());
-	}).val(unit_cost);
+	$("#unit-cost").val(unit_cost);
 
-	$("#unit-cost").focusout(function(e) {
-		updateCostPerUnit($(this).val(), true);
-	});
+	$("#unit-cost").on("change click keyup input paste focus focusout", function(e) {
+		var val = $(this).val();
+		if(e.type == "focusout") {
+			updateCostPerUnit(val);
+		} else if(e.type == "keyup" && e.keyCode == 13) {
+			updateCostPerUnit(val);
+			$("#unit-cost").blur();
+		}
 
-	$("#unit-cost").focus(function(e) {
-		$("#unit-cost").addClass("alert alert-warning");
+		if(isNumber(val) && parseFloat(val) == unit_cost) {
+			$("#unit-cost").removeClass("alert alert-warning");
+		} else {
+			$("#unit-cost").addClass("alert alert-warning");
+		}
 	});
 
 	createDropdown();
@@ -62,13 +67,11 @@ function createDropdown() {
 	});
 }
 
-function updateCostPerUnit(new_cost, do_not_blur) {
-	if(!isNaN(parseFloat(new_cost)) && isFinite(new_cost)) {
+function updateCostPerUnit(new_cost) {
+	if(isNumber(new_cost)) {
 		$("#unit-cost").removeClass("alert alert-warning");
 		unit_cost = parseFloat(new_cost);
 		cost_per_second = unit_cost / units[unit];
-		if(!do_not_blur)
-			$("#unit-cost").blur();
 	}
 }
 
@@ -123,6 +126,10 @@ function update() {
 
 function time() {
 	return (new Date()).getTime() / 1000;
+}
+
+function isNumber(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 function formatTime(t) {
