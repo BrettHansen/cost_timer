@@ -16,7 +16,7 @@ var units = {
 
 }
 var unit;
-var unit_cost = 56720;
+var unit_cost = 55775;
 var cost_per_second = 0;
 var unit_display = $("#unit-display");
 var tip_shown = true;
@@ -50,7 +50,7 @@ function initialize() {
 			$("#unit-cost").addClass("alert alert-warning");
 			if(tip_shown) {
 				tip_shown = false;
-				$("#unit-cost-tip").css({"display": "none"});
+				$("#unit-cost-tip").fadeTo(1000, 0);
 			}
 		}
 	});
