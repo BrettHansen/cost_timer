@@ -1,16 +1,13 @@
 body {
-  padding-top: 5rem;
+	padding-top: 5rem;
 }
 
 #timer-container, #cost-container {
-  text-align: center;
+	text-align: center;
 }
 
 #equals {
 	margin: 0 50px;
-}
-
-#cost {
 }
 
 .positive-cost {
@@ -42,6 +39,7 @@ h1 {
 }
 
 #unit-cost {
+	text-align: right;
 	width: 100px;
 }
 
@@ -51,6 +49,10 @@ h1 {
 
 #unit-per {
 	margin: 0 25px;
+}
+
+#unit-cost, #unit-display-button {
+	border-color: #999999;
 }
 
 .caret {
@@ -64,4 +66,12 @@ h1 {
 .spacer {
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+#unit-cost-tip {
+	padding: 10px;
+	width: 250px;
+	border-radius: 5px;
+	border: 1px solid #555555;
+	margin: 20px auto;
 }

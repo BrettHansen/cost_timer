@@ -16,9 +16,10 @@ var units = {
 
 }
 var unit;
-var unit_cost = 28.36;
+var unit_cost = 56720;
 var cost_per_second = 0;
 var unit_display = $("#unit-display");
+var tip_shown = true;
 
 initialize();
 function initialize() {
@@ -35,7 +36,7 @@ function initialize() {
 	$("#unit-cost").val(unit_cost);
 
 	$("#unit-cost").on("change click keyup input paste focus focusout", function(e) {
-		var val = $(this).val();
+		var val = $(this).val().replace(/,/g, "");
 		if(e.type == "focusout") {
 			updateCostPerUnit(val);
 		} else if(e.type == "keyup" && e.keyCode == 13) {
@@ -47,11 +48,15 @@ function initialize() {
 			$("#unit-cost").removeClass("alert alert-warning");
 		} else {
 			$("#unit-cost").addClass("alert alert-warning");
+			if(tip_shown) {
+				tip_shown = false;
+				$("#unit-cost-tip").css({"display": "none"});
+			}
 		}
 	});
 
 	createDropdown();
-	updateUnit("Hour");
+	updateUnit("Year (2000 hours)");
 }
 
 function createDropdown() {
